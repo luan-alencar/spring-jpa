@@ -1,21 +1,46 @@
 package david.augusto.luan.entidades;
 
+import java.util.Date;
+
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data @NoArgsConstructor
 public class EmProvider {
-	private static final String DB_PU = "AplicaçãoPU";
 
-	public static final boolean DEBUG = true;
+  private static final String DB_PU = "AplicacaoAulaPU";
 
-	public static final EmProvider singleton = new EmProvider();
 
-	private EntityManagerFactory emf;
+    public static final boolean DEBUG = true;
 
-	public static EmProvider getInstance() {
-		return singleton;
-	}
+    private static final EmProvider singleton = new EmProvider();
+
+    private EntityManagerFactory emf;
+
+
+    private EmProvider() {}
+
+    public static EmProvider getInstance() {
+        return singleton;
+    }
+
+
+    public EntityManagerFactory getEntityManagerFactory() {
+        if(emf == null) {
+            emf = Persistence.createEntityManagerFactory(DB_PU);
+        }
+        if(DEBUG) {
+            System.out.println("factory created on: " + new Date());
+        }
+        return emf;
+    }
+
+    public void closeEmf() {
+        if(emf.isOpen() || emf != null) {
+            emf.close();
+        }
+        emf = null;
+        if(DEBUG) {
+            System.out.println("EMF closed at: " + new Date());
+        }
+    }
 }

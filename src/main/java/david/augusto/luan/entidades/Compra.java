@@ -10,30 +10,37 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "compra")
-@Data
-@Getter @Setter
-public class Compra implements Serializable{
+public class Compra implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
 	@Column(name = "id")
-	private Long id;
-	
+	private Integer id;
 	@Column(name = "valor")
-	private double valor;
+	private String valor;
 	@Column(name = "data")
+	@Temporal(TemporalType.DATE)
 	private Date data;
 	@Column(name = "observacao")
 	private String observacao;
 	@Column(name = "recebido")
-	private boolean recebido;
-	
+	private Boolean recebido;
 }

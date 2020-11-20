@@ -4,19 +4,18 @@ import javax.persistence.EntityManagerFactory;
 
 import org.springframework.stereotype.Controller;
 
-import david.augusto.luan.entidades.Compra;
+import david.augusto.luan.entidades.Pessoa;
 
 @Controller
-public class CompraController {
-	
+public class PessoaController {
+
 	private EntityManagerFactory entityManagerFactory;
 
-
-	public CompraController(EntityManagerFactory entityManagerFactory) {
+	public PessoaController(EntityManagerFactory entityManagerFactory) {
 		this.entityManagerFactory = entityManagerFactory;
 	}
 
-	public void create(Compra c1) {
+	public void create(Pessoa p) {
 	};
 
 	public void edit() {
@@ -31,4 +30,8 @@ public class CompraController {
 	public void findById() {
 	}
 
+	public char[] findPessoaEntities() {
+
+		return null;
+	};
 }
