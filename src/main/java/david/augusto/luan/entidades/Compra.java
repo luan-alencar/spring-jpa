@@ -24,7 +24,7 @@ public class Compra implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
-	@Column(name = "valor")
+	@Column(name = "id")
 	private Long id;
 	
 	@Column(name = "valor")
