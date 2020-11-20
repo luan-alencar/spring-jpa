@@ -1,5 +1,7 @@
 package david.augusto.luan.entidades;
 
+import java.io.Serializable;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +18,7 @@ import lombok.Setter;
 @Table(name = "pessoa")
 @Data
 @Getter @Setter
-public class Pessoa {
+public class Pessoa implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
